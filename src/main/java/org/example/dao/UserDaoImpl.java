@@ -7,7 +7,6 @@ import java.util.List;
 
 public class UserDaoImpl implements UserDao{
 
-
     private static List<User> users = new ArrayList<>();
 
     public UserDaoImpl() {
@@ -18,12 +17,13 @@ public class UserDaoImpl implements UserDao{
 
 
     @Override
-    public User getUserByName(String name) {
-        if (users.contains(name)) {
-            return new User(name);
-        } else {
-            return null;
+    public String getUserByName(String name) {
+        for (User user : users) {
+            if (user.getName().equals(name)) {
+                return user.getName();
+            }
         }
+        return null;
     }
 
     @Override
