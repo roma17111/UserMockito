@@ -16,6 +16,7 @@ public class UserDaoImpl implements UserDao{
         users.add(new User("Egor"));
     }
 
+
     @Override
     public User getUserByName(String name) {
         if (users.contains(name)) {
