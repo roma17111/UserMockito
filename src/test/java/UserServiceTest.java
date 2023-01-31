@@ -2,6 +2,7 @@ import org.example.dao.UserDaoImpl;
 import org.example.models.User;
 import org.example.services.UserServiceImpl;
 import org.junit.Before;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -12,25 +13,30 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.util.ArrayList;
-import java.util.List;
-
 
 @ExtendWith(MockitoExtension.class)
 public class UserServiceTest {
     private User user = new User("Вова");
     private User user1 = new User();
 
-    @InjectMocks
+
     private UserServiceImpl userService;
 
-    @Mock
+
     private UserDaoImpl userDao;
+
+    @BeforeEach
+   public void init1() {
+        MockitoAnnotations.initMocks(this);
+        userService = Mockito.spy(new UserServiceImpl(userDao));
+   }
 
     @Test
     public void checkUserExistTestTrue() {
         Assertions.assertNotNull(userService);
         Mockito.when(userService.checkUserExist(user)).thenReturn(true);
+        Assertions.assertTrue(userService.checkUserExist(user));
+        //first test
     }
 
     @Test
