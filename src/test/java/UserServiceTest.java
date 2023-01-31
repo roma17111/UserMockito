@@ -43,5 +43,7 @@ public class UserServiceTest {
     public void checkUserExistTestIsFalse() {
         Assertions.assertNotNull(userService);
         Mockito.when(userService.checkUserExist(user1)).thenReturn(false);
+        Assertions.assertFalse(userService.checkUserExist(user1));
+        //Second test
     }
 }
