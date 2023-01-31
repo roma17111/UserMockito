@@ -23,6 +23,7 @@ public class UserServiceTest {
     private UserServiceImpl userService;
 
 
+    @Mock
     private UserDaoImpl userDao;
 
     @BeforeEach
